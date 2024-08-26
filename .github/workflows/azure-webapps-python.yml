@@ -30,6 +30,7 @@ on:
 
 permissions:
   contents: read
+  id-token: write   #ACTIONS_ID_TOKEN_REQUEST_URL typically occurs when the GH aCtion WF is trying to use OIDC for authentication. So, necessary permissiono needs to be set here
 
 jobs:
   build:
