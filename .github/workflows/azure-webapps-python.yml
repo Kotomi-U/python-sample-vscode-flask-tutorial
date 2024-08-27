@@ -26,7 +26,8 @@ env:
 
 on:
   push:
-    branches: ${{env.BRANCH_NAME}}
+    branches: # expects a list of strings directly, and it doesn't support evaluating expressions in that context
+      - ${{env.BRANCH_NAME}}
   workflow_dispatch:
 
 jobs:
