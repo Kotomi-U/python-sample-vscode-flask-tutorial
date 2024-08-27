@@ -22,10 +22,11 @@ name: Build and deploy Python app to Azure Web App
 env:
   AZURE_WEBAPP_NAME: ms-kuvs-python-cicd-ghaction-web
   PYTHON_VERSION: '3.10'              # set this to the Python version to use
+  BRANCH_NAME: 'main'
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ ${{env.BRANCH_NAME}} ]
   workflow_dispatch:
 
 jobs:
@@ -66,9 +67,6 @@ jobs:
       
     runs-on: ubuntu-latest
     needs: build
-    environment:
-      name: 'Development to Azure POC env'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
       - name: Download artifact from build job
